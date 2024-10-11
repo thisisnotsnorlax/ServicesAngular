@@ -1,0 +1,43 @@
+<div class="d-flex align-items-center justify-content-center flex-column">
+  <div
+    class="border border-primary d-flex justify-content-center align-items-center flex-column w-25 p-5"
+  >
+    <input
+      type="number"
+      placeholder="Input student number"
+      [(ngModel)]="studID"
+    />
+    <br /><br />
+    <input
+      type="text"
+      placeholder="Input student name"
+      [(ngModel)]="studName"
+    /><br /><br />
+    <input
+      type="text"
+      placeholder="Input student section"
+      [(ngModel)]="studSec"
+    /><br /><br />
+    <button (click)="addStudents()" class="btn btn-outline-dark">Add</button>
+  </div>
+
+  <div class="border border-dark w-50 mt-3">
+    <h2>Student List</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>NAME</th>
+          <th>SECTION</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let student of getStudents()">
+        <tr>
+          <td>{{ student.studNum }}</td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.section }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
