@@ -1,0 +1,37 @@
+<div class="d-flex align-items-center justify-content-center flex-column">
+  <div class="border border-primary d-flex justify-content-center align-items-center flex-column w-25 p-5">
+    <input type="text" placeholder="Input ISBN" [(ngModel)]="isbn" />
+    <br /><br />
+    <input type="text" placeholder="Input Book Title" [(ngModel)]="bookTitle" />
+    <br /><br />
+    <input type="text" placeholder="Input Author Name" [(ngModel)]="author" />
+    <br /><br />
+    <button (click)="addBook()" class="btn btn-outline-dark">
+      {{ isEditing ? 'Update' : 'Add' }} Book
+    </button>
+  </div>
+  <div class="border border-dark w-50 mt-3">
+    <h2>Book List</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ISBN</th>
+          <th>Book Title</th>
+          <th>Author</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let book of getBooks()">
+        <tr>
+          <td>{{ book.isbn }}</td>
+          <td>{{ book.bookTitle }}</td>
+          <td>{{ book.author }}</td>
+          <td>
+            <button (click)="editBook(book)" class="btn btn-outline-info">Edit</button>
+            <button (click)="deleteBook(book.isbn)" class="btn btn-outline-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
