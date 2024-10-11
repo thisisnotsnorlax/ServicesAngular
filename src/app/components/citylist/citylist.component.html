@@ -1,0 +1,30 @@
+<div class="d-flex align-items-center justify-content-center flex-column">
+  <div class="border border-primary d-flex justify-content-center align-items-center flex-column w-25 p-5">
+    <input type="text" placeholder="Input City" [(ngModel)]="name" />
+    <br /><br />
+    <button (click)="addCity()" class="btn btn-outline-dark">
+      {{ isEditing ? 'Update' : 'Add' }} Book
+    </button>
+  </div>
+  <div class="border border-dark w-50 mt-3">
+    <h2>City List</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let name of getCities()">
+        <tr>
+          <td>{{ name.name }}</td>
+          <td>
+            <button (click)="editCity(name)" class="btn btn-outline-info">Edit</button>
+            <button (click)="deleteCity(name.name)" class="btn btn-outline-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
