@@ -1,0 +1,37 @@
+<div class="d-flex align-items-center justify-content-center flex-column">
+  <div class="border border-primary d-flex justify-content-center align-items-center flex-column w-25 p-5">
+    <input type="text" placeholder="Input course code" [(ngModel)]="courseCode" />
+    <br /><br />
+    <input type="text" placeholder="Input course name" [(ngModel)]="courseName" />
+    <br /><br />
+    <input type="text" placeholder="Input instructor name" [(ngModel)]="instructor" />
+    <br /><br />
+    <button (click)="addCourse()" class="btn btn-outline-dark">
+      {{ isEditing ? 'Update' : 'Add' }} Course
+    </button>
+  </div>
+  <div class="border border-dark w-50 mt-3">
+    <h2>Course List</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Course Code</th>
+          <th>Course Name</th>
+          <th>Instructor</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let course of getCourses()">
+        <tr>
+          <td>{{ course.courseCode }}</td>
+          <td>{{ course.courseName }}</td>
+          <td>{{ course.instructor }}</td>
+          <td>
+            <button (click)="editCourse(course)" class="btn btn-outline-info">Edit</button>
+            <button (click)="deleteCourse(course.courseCode)" class="btn btn-outline-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
